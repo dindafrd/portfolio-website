@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio - Modern Digital Architect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap");
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+
+      /* Hide scrollbar for Chrome, Safari and Opera */
+      ::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Hide scrollbar for IE, Edge and Firefox */
+      body {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      const { motion } = window.Motion;
+
+      const FadeInWhenVisible = ({ children, delay = 0 }) => {
+        return (
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{
+              duration: 0.8,
+              delay,
+              ease: [0.21, 0.47, 0.32, 0.98],
+            }}
+          >
+            {children}
+          </motion.div>
+        );
+      };
+
+      function PortfolioTemplate() {
+        return (
+          <div className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-white selection:text-black">
+            {/* Navigation */}
+            <motion.nav
+              initial={{ y: -100 }}
+              animate={{ y: 0 }}
+              transition={{ duration: 0.8, ease: "circOut" }}
+              className="fixed top-0 w-full z-50 px-8 md:px-20 py-6 flex justify-between items-center backdrop-blur-md bg-neutral-950/50 border-b border-neutral-800/50"
+            >
+              <div className="text-xl font-bold tracking-tighter">
+                INFRA.SUPPORT
+              </div>
+              <div className="hidden md:flex gap-8 text-sm font-medium text-neutral-400 uppercase tracking-widest">
+                <a href="#" className="hover:text-white transition">
+                  Overview
+                </a>
+                <a href="#about" className="hover:text-white transition">
+                  Expertise
+                </a>
+                <a href="#projects" className="hover:text-white transition">
+                  Focus Areas
+                </a>
+                <a href="#experience" className="hover:text-white transition">
+                  Journey
+                </a>
+                <a href="#contact" className="hover:text-white transition">
+                  Connect
+                </a>
+              </div>
+              <button className="px-5 py-2 rounded-full bg-white text-black text-sm font-semibold hover:bg-neutral-200 transition">
+                Get in Touch
+              </button>
+            </motion.nav>
+
+            {/* Hero Section */}
+            <section className="relative px-8 md:px-20 pt-40 pb-24 overflow-hidden border-b border-neutral-800">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-white/5 blur-[120px] rounded-full pointer-events-none"></div>
+
+              <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center relative z-10">
+                <motion.div
+                  initial={{ opacity: 0, x: -50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                >
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 mb-6">
+                    <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    <span className="text-xs uppercase tracking-[0.2em] text-neutral-400">
+                      Available for Work
+                    </span>
+                  </div>
+                  <h1 className="text-6xl md:text-8xl font-bold leading-[1.1] tracking-tighter mb-8">
+                    IT Infrastructure{" "}
+                    <span className="text-neutral-500">& Support</span>{" "}
+                    Specialist
+                  </h1>
+                  <p className="text-neutral-400 text-xl leading-relaxed mb-10 max-w-xl">
+                    Supporting IT operations, network infrastructure, and
+                    digital transformation initiatives with a focus on
+                    reliability and scalability in the energy sector.
+                  </p>
+
+                  <div className="flex flex-wrap gap-5">
+                    <button className="px-8 py-4 rounded-2xl bg-white text-black font-bold hover:scale-105 transition-all shadow-xl shadow-white/5">
+                      Expertise Overview
+                    </button>
+                    <button className="px-8 py-4 rounded-2xl border border-neutral-700 hover:bg-neutral-900 transition-all font-medium">
+                      Technical CV
+                    </button>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                  transition={{ duration: 1, delay: 0.4, ease: "backOut" }}
+                  className="relative group"
+                >
+                  <div className="absolute -inset-1 bg-gradient-to-r from-neutral-800 to-neutral-700 rounded-[3rem] blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                  <div className="relative w-full aspect-square md:w-[450px] md:h-[450px] rounded-[2.5rem] bg-neutral-900 border border-neutral-800 flex items-center justify-center overflow-hidden">
+                    <div className="text-center">
+                      <motion.div
+                        whileHover={{ rotate: 0, scale: 1.1 }}
+                        className="w-32 h-32 rounded-3xl bg-neutral-800 mx-auto mb-8 rotate-12 transition-transform duration-500 flex items-center justify-center border border-neutral-700"
+                      >
+                        <div className="w-16 h-16 rounded-2xl bg-white/10"></div>
+                      </motion.div>
+                      <h2 className="text-3xl font-bold tracking-tight">
+                        IT Specialist
+                      </h2>
+                      <p className="text-neutral-500 mt-2 text-lg">
+                        Infrastructure • Monitoring • Support
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </section>
+
+            {/* About Section */}
+            <section
+              id="about"
+              className="px-8 md:px-20 py-32 border-b border-neutral-800"
+            >
+              <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-20">
+                <FadeInWhenVisible>
+                  <div>
+                    <p className="text-sm uppercase tracking-[0.3em] text-neutral-500 mb-6">
+                      About Me
+                    </p>
+                    <h2 className="text-5xl font-bold mb-8 tracking-tight">
+                      Architecting{" "}
+                      <span className="text-neutral-500">Resilient</span> IT
+                      Infrastructure
+                    </h2>
+                    <p className="text-neutral-400 leading-relaxed text-xl mb-8">
+                      With nearly 2 years of experience in the energy sector, I
+                      specialize in maintaining operational continuity for over
+                      100 users through proactive monitoring, server
+                      administration, and strategic infrastructure design. I
+                      bridge the gap between business requirements and technical
+                      solutions.
+                    </p>
+                    <div className="flex gap-10">
+                      <div>
+                        <div className="text-3xl font-bold mb-1">2</div>
+                        <div className="text-sm text-neutral-500 uppercase tracking-widest">
+                          Years Exp.
+                        </div>
+                      </div>
+                      <div>
+                        <div className="text-3xl font-bold mb-1">100+</div>
+                        <div className="text-sm text-neutral-500 uppercase tracking-widest">
+                          Users Supported
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </FadeInWhenVisible>
+
+                <div className="grid grid-cols-2 gap-4">
+                  {[
+                    "Network Infrastructure",
+                    "Server Administration",
+                    "Infrastructure Monitoring",
+                    "IT Asset Management",
+                    "Enterprise Architecture",
+                    "Capacity Planning",
+                  ].map((skill, index) => (
+                    <FadeInWhenVisible key={skill} delay={index * 0.1}>
+                      <motion.div
+                        whileHover={{
+                          y: -10,
+                          backgroundColor: "#ffffff",
+                          color: "#000000",
+                        }}
+                        className="group p-6 rounded-3xl bg-neutral-900 border border-neutral-800 transition-all duration-300 h-full"
+                      >
+                        <h3 className="font-semibold text-lg tracking-tight">
+                          {skill}
+                        </h3>
+                        <div className="w-8 h-1 bg-neutral-700 mt-4 group-hover:bg-black/20 transition-colors"></div>
+                      </motion.div>
+                    </FadeInWhenVisible>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {/* Projects */}
+            <section
+              id="projects"
+              className="px-8 md:px-20 py-32 border-b border-neutral-800"
+            >
+              <div className="max-w-6xl mx-auto">
+                <FadeInWhenVisible>
+                  <div className="flex justify-between items-end mb-20">
+                    <div>
+                      <p className="text-sm uppercase tracking-[0.3em] text-neutral-500 mb-6">
+                        Projects
+                      </p>
+                      <h2 className="text-5xl font-bold tracking-tight">
+                        Selected Works
+                      </h2>
+                    </div>
+                    <button className="hidden md:block text-neutral-400 hover:text-white transition uppercase tracking-widest text-sm font-semibold border-b border-neutral-800 pb-2">
+                      View All Projects
+                    </button>
+                  </div>
+                </FadeInWhenVisible>
+
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                  {[
+                    {
+                      title: "Infrastructure Monitoring",
+                      desc: "Implementing real-time monitoring solutions for server health and network uptime.",
+                      category: "Network",
+                    },
+                    {
+                      title: "IT Asset Management",
+                      desc: "Streamlining life-cycle management for IT hardware and software across the enterprise.",
+                      category: "Operations",
+                    },
+                    {
+                      title: "Technical Documentation",
+                      desc: "Developing comprehensive SOPs and infrastructure diagrams for digital transformation.",
+                      category: "Strategy",
+                    },
+                  ].map((project, index) => (
+                    <FadeInWhenVisible key={project.title} delay={index * 0.2}>
+                      <motion.div
+                        whileHover={{ y: -15 }}
+                        className="group rounded-[2.5rem] overflow-hidden bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition-all duration-500"
+                      >
+                        <div className="h-64 bg-neutral-800 relative overflow-hidden">
+                          <motion.div
+                            whileHover={{ scale: 1.1 }}
+                            className="absolute inset-0 bg-gradient-to-br from-neutral-700/50 to-transparent transition-transform duration-700"
+                          ></motion.div>
+                          <div className="absolute top-6 left-6 px-4 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-[10px] uppercase tracking-widest font-bold">
+                            {project.category}
+                          </div>
+                        </div>
+                        <div className="p-10">
+                          <h3 className="text-2xl font-bold mb-4 tracking-tight group-hover:text-neutral-300 transition-colors">
+                            {project.title}
+                          </h3>
+                          <p className="text-neutral-400 leading-relaxed mb-6">
+                            {project.desc}
+                          </p>
+                          <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest group-hover:gap-4 transition-all duration-300">
+                            <span>View Details</span>
+                            <span className="text-xl">→</span>
+                          </div>
+                        </div>
+                      </motion.div>
+                    </FadeInWhenVisible>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {/* Experience */}
+            <section
+              id="experience"
+              className="px-8 md:px-20 py-32 border-b border-neutral-800"
+            >
+              <div className="max-w-6xl mx-auto">
+                <FadeInWhenVisible>
+                  <div className="mb-20">
+                    <p className="text-sm uppercase tracking-[0.3em] text-neutral-500 mb-6">
+                      Experience
+                    </p>
+                    <h2 className="text-5xl font-bold tracking-tight">
+                      Professional Path
+                    </h2>
+                  </div>
+                </FadeInWhenVisible>
+
+                <div className="space-y-6">
+                  {[
+                    {
+                      role: "IT Infrastructure & Support Specialist",
+                      company: "Energy Sector Enterprise",
+                      year: "2024 - Present",
+                      desc: "Optimizing server administration and maintaining operational continuity for 100+ users.",
+                    },
+                    {
+                      role: "IT Support Assistant",
+                      company: "Technology Services",
+                      year: "2023 - 2024",
+                      desc: "Assisting in network troubleshooting and system maintenance.",
+                    },
+                  ].map((exp, index) => (
+                    <FadeInWhenVisible key={exp.role} delay={index * 0.1}>
+                      <motion.div
+                        whileHover={{
+                          x: 20,
+                          backgroundColor: "rgba(38, 38, 38, 0.5)",
+                        }}
+                        className="group p-10 rounded-[2.5rem] bg-neutral-900 border border-neutral-800 flex flex-col md:flex-row md:items-center justify-between gap-8 transition-all duration-300"
+                      >
+                        <div className="flex-1">
+                          <div className="text-neutral-500 text-sm font-bold uppercase tracking-widest mb-2">
+                            {exp.year}
+                          </div>
+                          <h3 className="text-3xl font-bold tracking-tight mb-2 group-hover:text-white transition-colors">
+                            {exp.role}
+                          </h3>
+                          <p className="text-neutral-400 text-lg">
+                            {exp.company}
+                          </p>
+                        </div>
+                        <p className="md:max-w-xs text-neutral-500 leading-relaxed italic">
+                          "{exp.desc}"
+                        </p>
+                      </motion.div>
+                    </FadeInWhenVisible>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {/* Contact */}
+            <section
+              id="contact"
+              className="px-8 md:px-20 py-40 bg-white text-black"
+            >
+              <div className="max-w-4xl mx-auto text-center">
+                <FadeInWhenVisible>
+                  <p className="text-sm uppercase tracking-[0.3em] text-neutral-500 mb-8 font-bold">
+                    Get in Touch
+                  </p>
+                  <h2 className="text-6xl md:text-8xl font-bold mb-10 tracking-tighter">
+                    Let’s Build <span className="text-neutral-400">Robust</span>{" "}
+                    Systems.
+                  </h2>
+                  <p className="text-neutral-600 text-xl mb-12 max-w-2xl mx-auto leading-relaxed font-medium">
+                    Open for collaboration on IT architecture, infrastructure
+                    design, and enterprise-scale support. Let's discuss how I
+                    can help your digital transformation.
+                  </p>
+
+                  <div className="flex flex-wrap justify-center gap-6">
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="px-10 py-5 rounded-2xl bg-black text-white font-bold transition-all shadow-2xl"
+                    >
+                      hello@yourname.com
+                    </motion.button>
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="px-10 py-5 rounded-2xl border-2 border-black font-bold transition-all"
+                    >
+                      LinkedIn Profile
+                    </motion.button>
+                  </div>
+                </FadeInWhenVisible>
+              </div>
+            </section>
+
+            {/* Footer */}
+            <footer className="px-8 md:px-20 py-12 border-t border-neutral-800 flex flex-col md:flex-row justify-between items-center gap-8 text-neutral-500 text-sm font-medium uppercase tracking-widest">
+              <div>© 2026 COBAIN. All Rights Reserved.</div>
+              <div className="flex gap-8">
+                <a href="#" className="hover:text-white transition">
+                  Instagram
+                </a>
+                <a href="#" className="hover:text-white transition">
+                  Github
+                </a>
+                <a href="#" className="hover:text-white transition">
+                  Dribbble
+                </a>
+              </div>
+              <div>Designed with ❤️ in Indonesia</div>
+            </footer>
+          </div>
+        );
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<PortfolioTemplate />);
+    </script>
+  </body>
+</html>
